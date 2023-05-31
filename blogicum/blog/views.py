@@ -33,10 +33,10 @@ def category_posts(request, category_slug):
     template = 'blog/category.html'
     category = get_object_or_404(
         Category.objects.values(
-                'title', 'description'
+                'title', 'description',
             ).filter(
-            slug=category_slug,
-            is_published=True
+                slug=category_slug,
+                is_published=True
         )
     )
 
@@ -49,5 +49,5 @@ def category_posts(request, category_slug):
     context = {
         'category': category,
         'post_list': post_list
-               }
+    }
     return render(request, template, context)
